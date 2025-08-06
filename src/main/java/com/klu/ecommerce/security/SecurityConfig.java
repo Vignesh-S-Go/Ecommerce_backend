@@ -20,17 +20,18 @@ public class SecurityConfig {
         this.userDetailsService = userDetailsService;
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .csrf().disable()  // 🔹 Disable CSRF for API requests
-            .authorizeHttpRequests()
-            .antMatchers("/auth/**", "/api/products/**", "/api/payments/**").permitAll()
-            .anyRequest().authenticated()
-            .and()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        return http.build();
-    }
+    @SuppressWarnings("removal")
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	    http
+	        .csrf(csrf -> csrf.disable())
+	        .authorizeHttpRequests(auth -> auth
+	            .requestMatchers("/api/public", "/api/login", "/api/register").permitAll()
+	            .anyRequest().authenticated()
+	        );
+
+	    return http.build();
+	}
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
