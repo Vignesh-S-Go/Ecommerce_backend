@@ -61,16 +61,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.vip</groupId>
-			<artifactId>ProVig</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.vi</groupId>
-			<artifactId>VILAB8</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
 		    <scope>provided</scope>
